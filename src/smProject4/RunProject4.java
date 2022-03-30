@@ -20,7 +20,7 @@ public class RunProject4 extends Application {
 	{
 		stage.setTitle("Cafe");
 		Parent main = FXMLLoader.load(getClass().getResource("MainView.fxml"));
-		stage.setScene(new Scene(main, 400, 800));
+		stage.setScene(new Scene(main, 800, 400));
 		stage.show();
 	}
 }
