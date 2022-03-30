@@ -1,12 +1,23 @@
 package smProject4;
 
 public class StoreOrders implements Customizable {
-	//An instance of this class keeps a list of orders placed by the user. This class must implement the Customizable interface above to provide the behavior of adding and removing orders.
-	public boolean add(Object obj) {
+	private int max = 4;
+	private int numOrds;
+	private Order[] orders;
+
+	public StoreOrders() {
+		orders = new Order[max];
+		numOrds = 0;
+	}
+
+	private void grow() {
+	}
+
+	public boolean add(Object order) {
 		return true;
 	}
 
-	public boolean remove(Object obj) {
+	public boolean remove(Object order) {
 		return false;
 	}
 }
