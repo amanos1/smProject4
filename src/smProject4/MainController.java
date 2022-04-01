@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
@@ -15,6 +17,8 @@ public class MainController implements Initializable {
 	Stage coffeeStage;
 	Stage basketStage;
 	Stage ordersStage;
+
+	@FXML private Button button;
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -29,6 +33,14 @@ public class MainController implements Initializable {
 
 		ordersStage = new Stage();
 		ordersStage.setTitle("View all Store Orders");
+
+		/*Stage stage = (Stage) button.getScene().getWindow();
+		stage.setOnCloseRequest(e -> {
+			donutsStage.close();
+			coffeeStage.close();
+			basketStage.close();
+			ordersStage.close();
+		});*/
 	}
 
 	public void orderDonuts() throws IOException {

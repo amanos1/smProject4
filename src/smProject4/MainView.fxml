@@ -7,7 +7,7 @@
    <children>
       <Button layoutX="134.0" layoutY="94.0" mnemonicParsing="false" onAction="#orderDonuts" text="Order Donuts" />
       <Button layoutX="134.0" layoutY="222.0" mnemonicParsing="false" onAction="#storeOrders" text="View Store Orders" />
-      <Button layoutX="134.0" layoutY="175.0" mnemonicParsing="false" onAction="#currentOrder" text="View Current Order" />
+      <Button fx:id="button" layoutX="134.0" layoutY="175.0" mnemonicParsing="false" onAction="#currentOrder" text="View Current Order" />
       <Button layoutX="134.0" layoutY="135.0" mnemonicParsing="false" onAction="#orderCoffee" text="Order Coffee" />
    </children>
 </Pane>
