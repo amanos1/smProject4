@@ -14,10 +14,9 @@ public class Coffee extends MenuItem implements Customizable {
 
 	private Set<Topping> addons;
 	private int size;
-	private double price;
 
-	public Coffee(int size) {
-		this.size = size;
+	public Coffee() {
+		this.size = SHORT;
 		this.price = DEFAULT_COST;
 		this.addons = new HashSet<Topping>();
 	}

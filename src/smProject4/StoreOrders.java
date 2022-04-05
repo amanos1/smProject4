@@ -1,23 +1,23 @@
 package smProject4;
 
+import java.util.ArrayList;
+
 public class StoreOrders implements Customizable {
-	private int max = 4;
-	private int numOrds;
-	private Order[] orders;
+	private ArrayList<Order> orders;
 
 	public StoreOrders() {
-		orders = new Order[max];
-		numOrds = 0;
-	}
-
-	private void grow() {
+		orders = new ArrayList<Order>();
 	}
 
 	public boolean add(Object order) {
+		Order ord = (Order) order;
+		orders.add(ord);
 		return true;
 	}
 
 	public boolean remove(Object order) {
+		Order ord = (Order) order;
+		orders.remove(ord);
 		return false;
 	}
 }

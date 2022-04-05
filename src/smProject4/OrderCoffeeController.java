@@ -1,6 +1,7 @@
 package smProject4;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -10,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class OrderCoffeeController implements Initializable {
 	@FXML private CheckBox cream;
@@ -22,6 +24,8 @@ public class OrderCoffeeController implements Initializable {
 	@FXML private TextField currentPrice;
 	
 	private Coffee thisCoffee;
+	private MainController main;
+
 	private final int SHORT  = 1;
 	private final int TALL   = 2;
 	private final int GRANDE = 3;
@@ -30,9 +34,11 @@ public class OrderCoffeeController implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		size.getItems().addAll("Short", "Tall", "Grande", "Venti");
-		size.setPromptText("Size");
+		size.setValue("Short");
 
-		thisCoffee = new Coffee(SHORT);
+		thisCoffee = new Coffee();
+
+		updatePrice();
 
 		cream.selectedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
@@ -42,9 +48,82 @@ public class OrderCoffeeController implements Initializable {
 				updatePrice();
 		    }
 		});
+
+		syrup.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if(newValue) thisCoffee.add(Topping.SYRUP);
+				else thisCoffee.remove(Topping.SYRUP);
+				updatePrice();
+		    }
+		});
+
+		milk.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if(newValue) thisCoffee.add(Topping.MILK);
+				else thisCoffee.remove(Topping.MILK);
+				updatePrice();
+		    }
+		});
+
+		caramel.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if(newValue) thisCoffee.add(Topping.CARAMEL);
+				else thisCoffee.remove(Topping.CARAMEL);
+				updatePrice();
+		    }
+		});
+
+		whip.selectedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if(newValue) thisCoffee.add(Topping.WHIPPED_CREAM);
+				else thisCoffee.remove(Topping.WHIPPED_CREAM);
+				updatePrice();
+		    }
+		});
+	}
+
+	public void sizeChange() {
+		String newSize = size.getValue();
+		int newSizeNumber = 0;
+		switch(newSize) {
+		case "Short":
+			newSizeNumber = SHORT;
+			break;
+		case "Tall":
+			newSizeNumber = TALL;
+			break;
+		case "Grande":
+			newSizeNumber = GRANDE;
+			break;
+		case "Venti":
+			newSizeNumber = VENTI;
+		}
+
+		thisCoffee.changeSize(newSizeNumber);
+		updatePrice();
 	}
 
 	private void updatePrice() {
-		currentPrice.setText(null);
+		DecimalFormat df = new DecimalFormat("###,##0.00");
+		currentPrice.setText(df.format(thisCoffee.itemPrice()));
+	}
+
+	public void setMain(MainController mc) {
+		main = mc;
+	}
+
+	public void addToOrder() {
+		main.addCoffee(thisCoffee);
+		Stage stage = (Stage) cream.getScene().getWindow();
+		stage.close();
+	}
+
+	public void cancel() {
+		Stage stage = (Stage) cream.getScene().getWindow();
+		stage.close();
 	}
 }

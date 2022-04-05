@@ -16,8 +16,9 @@
       <CheckBox fx:id="syrup" layoutX="183.0" layoutY="165.0" mnemonicParsing="false" text="Syrup" />
       <ComboBox fx:id="size" layoutX="387.0" layoutY="168.0" prefWidth="150.0" />
       <Label layoutX="452.0" layoutY="138.0" text="Size" />
-      <Button layoutX="419.0" layoutY="287.0" mnemonicParsing="false" text="Add to Order" />
+      <Button layoutX="419.0" layoutY="287.0" mnemonicParsing="false" onAction="#addToOrder" text="Add to Order" />
       <TextField fx:id="currentPrice" layoutX="388.0" layoutY="245.0" />
       <Label layoutX="448.0" layoutY="217.0" text="Price:" />
+      <Button layoutX="436.0" layoutY="340.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
    </children>
 </Pane>

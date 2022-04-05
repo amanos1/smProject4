@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,9 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
+	StoreOrders database;
+	Order currentOrder;
+
 	Stage donutsStage;
 	Stage coffeeStage;
 	Stage basketStage;
@@ -34,6 +39,9 @@ public class MainController implements Initializable {
 		ordersStage = new Stage();
 		ordersStage.setTitle("View all Store Orders");
 
+		currentOrder = new Order();
+		database = new StoreOrders();
+
 		/*Stage stage = (Stage) button.getScene().getWindow();
 		stage.setOnCloseRequest(e -> {
 			donutsStage.close();
@@ -44,18 +52,22 @@ public class MainController implements Initializable {
 	}
 
 	public void orderDonuts() throws IOException {
-		Parent donutRoot = FXMLLoader.load(getClass().getResource("OrderDonutsView.fxml"));
+		FXMLLoader dddd = new FXMLLoader(getClass().getResource("OrderDonutsView.fxml"));
+		Parent donutRoot = dddd.load();
 		donutsStage.setScene(new Scene(donutRoot, 600, 400));
 		donutsStage.show();
 	}
 
-	public void orderCoffee() throws IOException{
-		Parent coffeeRoot = FXMLLoader.load(getClass().getResource("OrderCoffeeView.fxml"));
+	public void orderCoffee() throws IOException {
+		FXMLLoader cccc = new FXMLLoader(getClass().getResource("OrderCoffeeView.fxml"));
+		Parent coffeeRoot = cccc.load();
+		OrderCoffeeController occ = cccc.getController();
+		occ.setMain(this);
 		coffeeStage.setScene(new Scene(coffeeRoot, 600, 400));
 		coffeeStage.show();
 	}
 
-	public void currentOrder() throws IOException{
+	public void currentOrder() throws IOException {
 		Parent basketRoot = FXMLLoader.load(getClass().getResource("BasketView.fxml"));
 		basketStage.setScene(new Scene(basketRoot, 600, 400));
 		basketStage.show();
@@ -65,5 +77,9 @@ public class MainController implements Initializable {
 		Parent ordersRoot = FXMLLoader.load(getClass().getResource("OrdersView.fxml"));
 		ordersStage.setScene(new Scene(ordersRoot, 600, 400));
 		ordersStage.show();
+	}
+
+	public void addCoffee(Coffee coffee) {
+		currentOrder.add(coffee);
 	}
 }
