@@ -19,8 +19,11 @@ public class RunProject4 extends Application {
 	public void start(Stage stage) throws Exception
 	{
 		stage.setTitle("Cafe");
-		Parent main = FXMLLoader.load(getClass().getResource("MainView.fxml"));
+		FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
+		Parent main = mainLoader.load();
 		stage.setScene(new Scene(main, 800, 400));
 		stage.show();
+		MainController mainController = mainLoader.getController();
+		mainController.closeListener(stage);
 	}
 }

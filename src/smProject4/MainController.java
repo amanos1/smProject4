@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainController implements Initializable {
@@ -23,7 +21,7 @@ public class MainController implements Initializable {
 	Stage basketStage;
 	Stage ordersStage;
 
-	@FXML private Button button;
+	@FXML private Pane pane;
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,27 +39,19 @@ public class MainController implements Initializable {
 
 		currentOrder = new Order();
 		database = new StoreOrders();
-
-		/*Stage stage = (Stage) button.getScene().getWindow();
-		stage.setOnCloseRequest(e -> {
-			donutsStage.close();
-			coffeeStage.close();
-			basketStage.close();
-			ordersStage.close();
-		});*/
 	}
 
 	public void orderDonuts() throws IOException {
-		FXMLLoader dddd = new FXMLLoader(getClass().getResource("OrderDonutsView.fxml"));
-		Parent donutRoot = dddd.load();
+		FXMLLoader donutLoader = new FXMLLoader(getClass().getResource("OrderDonutsView.fxml"));
+		Parent donutRoot = donutLoader.load();
 		donutsStage.setScene(new Scene(donutRoot, 600, 400));
 		donutsStage.show();
 	}
 
 	public void orderCoffee() throws IOException {
-		FXMLLoader cccc = new FXMLLoader(getClass().getResource("OrderCoffeeView.fxml"));
-		Parent coffeeRoot = cccc.load();
-		OrderCoffeeController occ = cccc.getController();
+		FXMLLoader coffeeLoader = new FXMLLoader(getClass().getResource("OrderCoffeeView.fxml"));
+		Parent coffeeRoot = coffeeLoader.load();
+		OrderCoffeeController occ = coffeeLoader.getController();
 		occ.setMain(this);
 		coffeeStage.setScene(new Scene(coffeeRoot, 600, 400));
 		coffeeStage.show();
@@ -81,5 +71,14 @@ public class MainController implements Initializable {
 
 	public void addCoffee(Coffee coffee) {
 		currentOrder.add(coffee);
+	}
+
+	public void closeListener(Stage stage) {
+		stage.setOnCloseRequest(e -> {
+			donutsStage.close();
+			coffeeStage.close();
+			basketStage.close();
+			ordersStage.close();
+		});
 	}
 }
