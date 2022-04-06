@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smProject4.BasketController">
+   <children>
+      <ListView fx:id="itemList" layoutX="150.0" layoutY="149.0" prefHeight="201.0" prefWidth="301.0" />
+      <Button layoutX="170.0" layoutY="361.0" mnemonicParsing="false" onAction="#submit" text="Complete Order" />
+      <Button layoutX="320.0" layoutY="361.0" mnemonicParsing="false" onAction="#remove" text="Remove Selected" />
+      <TextField fx:id="subtotal" layoutX="299.0" layoutY="29.0" />
+      <TextField fx:id="tax" layoutX="299.0" layoutY="63.0" />
+      <TextField fx:id="total" layoutX="299.0" layoutY="102.0" />
+   </children>
+</Pane>

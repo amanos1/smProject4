@@ -2,6 +2,7 @@ package smProject4;
 
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -22,6 +23,8 @@ public class OrderCoffeeController implements Initializable {
 
 	@FXML private ComboBox<String> size;
 	@FXML private TextField currentPrice;
+	@FXML private ComboBox<String> quantity;
+	private int amount;
 	
 	private Coffee thisCoffee;
 	private MainController main;
@@ -39,6 +42,7 @@ public class OrderCoffeeController implements Initializable {
 		thisCoffee = new Coffee();
 
 		updatePrice();
+		amount = 1;
 
 		cream.selectedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
@@ -117,7 +121,9 @@ public class OrderCoffeeController implements Initializable {
 	}
 
 	public void addToOrder() {
-		main.addCoffee(thisCoffee);
+		ArrayList<Coffee> coffees = new ArrayList<Coffee>();
+		for(int i = 0; i < amount; i++) coffees.add(thisCoffee);
+		main.addCoffee(coffees);
 		Stage stage = (Stage) cream.getScene().getWindow();
 		stage.close();
 	}

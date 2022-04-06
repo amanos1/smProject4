@@ -67,8 +67,7 @@ public class Coffee extends MenuItem implements Customizable {
 		}
 
 		result += "coffe with " + addons.size() + " toppings: ";
-		Iterator<Topping> i = addons.iterator();
-		while(i.hasNext()) {
+		for(Topping i : addons) {
 			result += i + ", ";
 		}
 		return result;

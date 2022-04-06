@@ -2,6 +2,7 @@ package smProject4;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -15,6 +16,9 @@ import javafx.stage.Stage;
 public class MainController implements Initializable {
 	StoreOrders database;
 	Order currentOrder;
+
+	BasketController basket;
+	OrdersController storeOrders;
 
 	Stage donutsStage;
 	Stage coffeeStage;
@@ -52,15 +56,18 @@ public class MainController implements Initializable {
 		FXMLLoader coffeeLoader = new FXMLLoader(getClass().getResource("OrderCoffeeView.fxml"));
 		Parent coffeeRoot = coffeeLoader.load();
 		OrderCoffeeController occ = coffeeLoader.getController();
-		occ.setMain(this);
 		coffeeStage.setScene(new Scene(coffeeRoot, 600, 400));
 		coffeeStage.show();
+		occ.setMain(this);
 	}
 
 	public void currentOrder() throws IOException {
-		Parent basketRoot = FXMLLoader.load(getClass().getResource("BasketView.fxml"));
+		FXMLLoader basketLoader = new FXMLLoader(getClass().getResource("BasketView.fxml"));
+		Parent basketRoot = basketLoader.load();
+		BasketController bc = basketLoader.getController();
 		basketStage.setScene(new Scene(basketRoot, 600, 400));
 		basketStage.show();
+		bc.populateList(currentOrder.getList());
 	}
 
 	public void storeOrders() throws IOException {
@@ -69,8 +76,16 @@ public class MainController implements Initializable {
 		ordersStage.show();
 	}
 
-	public void addCoffee(Coffee coffee) {
-		currentOrder.add(coffee);
+	public void addCoffee(ArrayList<Coffee> coffees) {
+		for(Coffee coffee : coffees) {
+			currentOrder.add(coffee);
+		}
+	}
+	
+	public void addDonuts(ArrayList<Donut> donuts) {
+		for(Donut donut : donuts) {
+			currentOrder.add(donut);
+		}
 	}
 
 	public void closeListener(Stage stage) {

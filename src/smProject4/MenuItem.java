@@ -6,4 +6,9 @@ public class MenuItem {
 	public double itemPrice() {
 		return price;
 	}
+
+	@Override
+	public String toString() {
+		return "Menu Item";
+	}
 }

@@ -16,6 +16,7 @@ public class Order implements Customizable{
 		MenuItem mi = (MenuItem) obj;
 		items.add(mi);
 		price += mi.itemPrice();
+		System.out.println(mi.toString());
 		return true;
 	}
 
@@ -24,6 +25,10 @@ public class Order implements Customizable{
 		items.remove(mi);
 		price -= mi.itemPrice();
 		return false;
+	}
+
+	public ArrayList<MenuItem> getList() {
+		return items;
 	}
 
 	public double orderPrice() {
