@@ -66,10 +66,11 @@ public class Coffee extends MenuItem implements Customizable {
 			break;
 		}
 
-		result += "coffe with " + addons.size() + " toppings: ";
+		result += "Coffee, [";
 		for(Topping i : addons) {
 			result += i + ", ";
 		}
+		result += "]";
 		return result;
 	}
 }

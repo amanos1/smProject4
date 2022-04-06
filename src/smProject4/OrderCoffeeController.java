@@ -14,6 +14,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Controls all the functions of the Coffee ordering window.
+ * @author Aaron Browne, Harshkumar Patel
+ */
 public class OrderCoffeeController implements Initializable {
 	@FXML private CheckBox cream;
 	@FXML private CheckBox syrup;
@@ -23,7 +27,7 @@ public class OrderCoffeeController implements Initializable {
 
 	@FXML private ComboBox<String> size;
 	@FXML private TextField currentPrice;
-	@FXML private ComboBox<String> quantity;
+	@FXML private ComboBox<Integer> quantity;
 	private int amount;
 	
 	private Coffee thisCoffee;
@@ -34,16 +38,28 @@ public class OrderCoffeeController implements Initializable {
 	private final int GRANDE = 3;
 	private final int VENTI  = 4;
 
+	/**
+	 * Initializes the values at sets up the program.
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		size.getItems().addAll("Short", "Tall", "Grande", "Venti");
 		size.setValue("Short");
 
+		quantity.getItems().addAll(1, 2, 3, 4, 5);
+		quantity.setValue(1);
+
 		thisCoffee = new Coffee();
 
-		updatePrice();
 		amount = 1;
+		updatePrice();
+		checkCheckBoxes();
+	}
 
+	/**
+	 * Changes the price and updates the coffee object when the checkboxes are checked or unchecked.
+	 */
+	private void checkCheckBoxes() {
 		cream.selectedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
 			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -90,6 +106,9 @@ public class OrderCoffeeController implements Initializable {
 		});
 	}
 
+	/**
+	 * Updates the current coffee object when the size of the coffee is changed.
+	 */
 	public void sizeChange() {
 		String newSize = size.getValue();
 		int newSizeNumber = 0;
@@ -111,15 +130,34 @@ public class OrderCoffeeController implements Initializable {
 		updatePrice();
 	}
 
-	private void updatePrice() {
-		DecimalFormat df = new DecimalFormat("###,##0.00");
-		currentPrice.setText(df.format(thisCoffee.itemPrice()));
+	/**
+	 * Updates the quantity variable when the user changes the quantity in the GUI.
+	 */
+	public void quantityChanged() {
+		int newQuantity = quantity.getValue();
+		amount = newQuantity;
+		updatePrice();
 	}
 
+	/**
+	 * Displays the current price on the GUI.
+	 */
+	private void updatePrice() {
+		DecimalFormat df = new DecimalFormat("###,##0.00");
+		currentPrice.setText(df.format(thisCoffee.itemPrice() * amount));
+	}
+
+	/**
+	 * Sets the main controller.
+	 * @param mc
+	 */
 	public void setMain(MainController mc) {
 		main = mc;
 	}
 
+	/**
+	 * Adds the current coffee(s) to the order when the user presses the submit button.
+	 */
 	public void addToOrder() {
 		ArrayList<Coffee> coffees = new ArrayList<Coffee>();
 		for(int i = 0; i < amount; i++) coffees.add(thisCoffee);
@@ -128,6 +166,9 @@ public class OrderCoffeeController implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * Closes the window when the user presses the cancel button.
+	 */
 	public void cancel() {
 		Stage stage = (Stage) cream.getScene().getWindow();
 		stage.close();

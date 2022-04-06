@@ -17,9 +17,6 @@ public class MainController implements Initializable {
 	StoreOrders database;
 	Order currentOrder;
 
-	BasketController basket;
-	OrdersController storeOrders;
-
 	Stage donutsStage;
 	Stage coffeeStage;
 	Stage basketStage;
@@ -67,13 +64,16 @@ public class MainController implements Initializable {
 		BasketController bc = basketLoader.getController();
 		basketStage.setScene(new Scene(basketRoot, 600, 400));
 		basketStage.show();
-		bc.populateList(currentOrder.getList());
+		bc.populateList(currentOrder, this);
 	}
 
 	public void storeOrders() throws IOException {
-		Parent ordersRoot = FXMLLoader.load(getClass().getResource("OrdersView.fxml"));
+		FXMLLoader storeLoader = new FXMLLoader(getClass().getResource("OrdersView.fxml"));
+		Parent ordersRoot = storeLoader.load();
+		OrdersController oc = storeLoader.getController();
 		ordersStage.setScene(new Scene(ordersRoot, 600, 400));
 		ordersStage.show();
+		oc.setup(database);
 	}
 
 	public void addCoffee(ArrayList<Coffee> coffees) {
@@ -86,6 +86,11 @@ public class MainController implements Initializable {
 		for(Donut donut : donuts) {
 			currentOrder.add(donut);
 		}
+	}
+
+	public void addOrder() {
+		database.add(currentOrder);
+		currentOrder = new Order();
 	}
 
 	public void closeListener(Stage stage) {

@@ -20,4 +20,8 @@ public class StoreOrders implements Customizable {
 		orders.remove(ord);
 		return false;
 	}
+
+	public ArrayList<Order> getList() {
+		return orders;
+	}
 }

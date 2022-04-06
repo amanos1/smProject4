@@ -20,5 +20,7 @@
       <TextField fx:id="currentPrice" layoutX="388.0" layoutY="245.0" />
       <Label layoutX="448.0" layoutY="217.0" text="Price:" />
       <Button layoutX="436.0" layoutY="340.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+      <ComboBox fx:id="quantity" layoutX="387.0" layoutY="87.0" onAction="#quantityChanged" prefWidth="150.0" />
+      <Label layoutX="448.0" layoutY="61.0" text="Quantity" />
    </children>
 </Pane>
