@@ -13,6 +13,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * Controls all the functions of the main window and holds the database of all orders.
+ * @author Aaron Browne, Harshkumar Patel
+ *
+ */
 public class MainController implements Initializable {
 	StoreOrders database;
 	Order currentOrder;
@@ -42,6 +47,10 @@ public class MainController implements Initializable {
 		database = new StoreOrders();
 	}
 
+	/**
+	 * Launches the donut ordering screen when the button is pressed.
+	 * @throws IOException
+	 */
 	public void orderDonuts() throws IOException {
 		FXMLLoader donutLoader = new FXMLLoader(getClass().getResource("OrderDonutsView.fxml"));
 		Parent donutRoot = donutLoader.load();
@@ -49,6 +58,10 @@ public class MainController implements Initializable {
 		donutsStage.show();
 	}
 
+	/**
+	 * Launches the coffee ordering window when the button is pressed.
+	 * @throws IOException
+	 */
 	public void orderCoffee() throws IOException {
 		FXMLLoader coffeeLoader = new FXMLLoader(getClass().getResource("OrderCoffeeView.fxml"));
 		Parent coffeeRoot = coffeeLoader.load();

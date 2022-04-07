@@ -13,5 +13,6 @@
       <TextField fx:id="orderPrice" layoutX="300.0" layoutY="76.0" />
       <Button layoutX="307.0" layoutY="342.0" mnemonicParsing="false" onAction="#removeOrder" text="Remove Order" />
       <Button layoutX="220.0" layoutY="342.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
+      <Button layoutX="423.0" layoutY="342.0" mnemonicParsing="false" onAction="#export" text="Export Orders to Text File" />
    </children>
 </Pane>
