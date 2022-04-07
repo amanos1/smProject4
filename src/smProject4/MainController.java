@@ -45,8 +45,10 @@ public class MainController implements Initializable {
 	public void orderDonuts() throws IOException {
 		FXMLLoader donutLoader = new FXMLLoader(getClass().getResource("OrderDonutsView.fxml"));
 		Parent donutRoot = donutLoader.load();
+		OrderDonutsController odc = donutLoader.getController();
 		donutsStage.setScene(new Scene(donutRoot, 600, 400));
 		donutsStage.show();
+		odc.setMain(this);
 	}
 
 	public void orderCoffee() throws IOException {

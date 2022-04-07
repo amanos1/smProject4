@@ -24,10 +24,11 @@ public class OrderDonutsController implements Initializable {
 	@FXML private ListView<String> orderList;
 	@FXML private Label currentPrice;
 	@FXML private Label total;
-	//@FXML private TextArea items;
+	
 	private double totalPrice;
 	DecimalFormat df = new DecimalFormat("#.##");
 	private ArrayList<Donut> donutLst = new ArrayList<Donut>();
+	private MainController main;
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) 
 	{
@@ -75,8 +76,17 @@ public class OrderDonutsController implements Initializable {
 		}
 		
 	}
+	
+	public void setMain(MainController mc) {
+		main = mc;
+	}
+	
 	public void addToOrder() 
 	{
-		
+		//ArrayList<Coffee> coffees = new ArrayList<Coffee>();
+		//for(int i = 0; i < donutLst.size(); i++) coffees.add(thisCoffee);
+		main.addDonuts(donutLst);
+		Stage stage = (Stage) type.getScene().getWindow();
+		stage.close();
 	}
 }
