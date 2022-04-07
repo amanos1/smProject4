@@ -1,48 +1,10 @@
 
 
 Order #1:
-	Grande Coffee, [Syrup, Cream, Milk, ].......3.39
-	Grande Coffee, [Syrup, Cream, Milk, ].......3.39
-	Venti Coffee, [Syrup, Whipped Cream, ].......3.49
-	Venti Coffee, [Syrup, Whipped Cream, ].......3.49
-	Venti Coffee, [Syrup, Whipped Cream, ].......3.49
+	Strawberry Cake Donut (5).......8.95
 Subtotal:
-	17.25
+	8.95
 Tax:
-	1.14
+	0.59
 Total:
-	18.39
-
-
-Order #2:
-	Short Coffee, [Syrup, Cream, Milk, ].......2.59
-	Short Coffee, [Syrup, Cream, Milk, ].......2.59
-	Short Coffee, [Syrup, Cream, Milk, ].......2.59
-Subtotal:
-	7.77
-Tax:
-	0.51
-Total:
-	8.28
-
-
-Order #3:
-	Venti Coffee, [Syrup, Cream, Caramel, ].......3.79
-	Venti Coffee, [Syrup, Cream, Caramel, ].......3.79
-	Venti Coffee, [Syrup, Cream, Caramel, ].......3.79
-Subtotal:
-	11.37
-Tax:
-	0.75
-Total:
-	12.12
-
-
-Order #4:
-	Short Coffee, [Whipped Cream, Cream, ].......2.29
-Subtotal:
-	2.29
-Tax:
-	0.15
-Total:
-	2.44
+	9.54
