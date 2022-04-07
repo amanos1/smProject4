@@ -7,9 +7,12 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.control.Alert.AlertType;
 
 public class BasketController implements Initializable {
 	@FXML private ListView<String> itemList;
@@ -42,6 +45,13 @@ public class BasketController implements Initializable {
 
 	public void submit() {
 		main.addOrder();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Order Removed");
+		alert.setHeaderText("Order Added Successfully!");
+		alert.setContentText("Order Added Successfully!");
+		alert.showAndWait();
+		Stage stage = (Stage) tax.getScene().getWindow();
+		stage.close();
 	}
 
 	public void update() {
