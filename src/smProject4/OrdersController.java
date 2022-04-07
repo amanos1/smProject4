@@ -79,7 +79,6 @@ public class OrdersController implements Initializable {
 
 
 	public void export() {
-		System.out.println("Hello");
 		PrintWriter out;
 		DecimalFormat df = new DecimalFormat("###,##0.00");
 		try {
@@ -99,7 +98,6 @@ public class OrdersController implements Initializable {
 			}
 			out.close();
 		} catch (Exception e) {
-			System.out.println("DANG!!");
 			return;
 		}
 	}
