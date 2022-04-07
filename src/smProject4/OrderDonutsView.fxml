@@ -27,31 +27,31 @@
       <Button layoutX="273.0" layoutY="257.0" mnemonicParsing="false" onAction="#remove" text="Remove" />
       <ImageView fx:id="img" fitHeight="34.0" fitWidth="36.0" layoutX="233.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="39-trash-outline.gif" />
+            <Image url="@../Icons/39-trash-outline.gif" />
          </image></ImageView>
       <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="233.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="64-shopping-bag-outline.gif" />
+            <Image url="@../Icons/64-shopping-bag-outline.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="47.0" fitWidth="27.0" layoutX="273.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="12-arrow-down-outline.gif" />
+            <Image url="@../Icons/12-arrow-down-outline.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="47.0" fitWidth="27.0" layoutX="273.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="12-arrow-down-outline.gif" />
+            <Image url="@../Icons/12-arrow-down-outline.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="47.0" fitWidth="27.0" layoutX="273.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="12-arrow-down-outline.gif" />
+            <Image url="@../Icons/12-arrow-down-outline.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="233.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="49-plus-circle-outline.gif" />
+            <Image url="@../Icons/49-plus-circle-outline.gif" />
          </image>
       </ImageView>
    </children>

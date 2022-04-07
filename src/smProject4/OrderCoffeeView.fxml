@@ -26,7 +26,7 @@
       <Label layoutX="448.0" layoutY="61.0" text="Quantity" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="67.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="615-coffee-machine-outline.gif" />
+            <Image url="@../Icons/615-coffee-machine-outline.gif" />
          </image>
       </ImageView>
    </children>
