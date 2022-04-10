@@ -43,7 +43,6 @@ public class OrderDonutsController implements Initializable {
 		quantity.setValue(1);
 		currentPrice.setText("0.00");
 		totalPrice = 0;
-		//update();
 	}
 
 	/**
@@ -73,9 +72,9 @@ public class OrderDonutsController implements Initializable {
 
 		for(Donut d : donutLst) {
 			if(d.toString().equals(selection)) {
-				currentPrice.setText("-"+d.price);
+				currentPrice.setText("-"+df.format(d.price));
 				donutLst.remove(d);
-				totalPrice -= d.price*d.getQuantity();
+				totalPrice -= d.price;
 				total.setText(df.format(totalPrice));
 				break;
 			}
@@ -89,14 +88,11 @@ public class OrderDonutsController implements Initializable {
 	 */
 	private void update() {
 		orderList.getItems().clear();
-	//	double totalPrice = 0;
 
 		for(Donut d : donutLst) {
 			orderList.getItems().add(d.toString());
-			//totalPrice += d.itemPrice()*d.getQuantity();
 		}
 
-		//total.setText(df.format(totalPrice));
 	}
 
 	/**
