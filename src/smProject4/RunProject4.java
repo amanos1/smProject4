@@ -6,7 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Driver class that sets up and loads the program.
+ * @author Aaron Browne
+ */
 public class RunProject4 extends Application {
+
+	/**
+	 * Main function that just calls the javafx launch function.
+	 * @param args Command-line arguments
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

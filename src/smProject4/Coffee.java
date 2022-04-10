@@ -1,9 +1,13 @@
 package smProject4;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * Contains information about a single coffee.
+ * stores the size and toppings of the coffee.
+ * @author Aaron Browne
+ */
 public class Coffee extends MenuItem implements Customizable {
 	private final int SHORT  = 1;
 	private final int TALL   = 2;
@@ -11,16 +15,24 @@ public class Coffee extends MenuItem implements Customizable {
 	private final int VENTI  = 4;
 
 	private final double DEFAULT_COST = 1.69;
+	private final double INCREASE_PER_SIZE = 0.4;
+	private final double INCREASE_PER_ADDON = 0.3;
 
 	private Set<Topping> addons;
 	private int size;
 
+	/**
+	 * Sets up the list of toppings and initializes the size and price.
+	 */
 	public Coffee() {
 		this.size = SHORT;
 		this.price = DEFAULT_COST;
 		this.addons = new HashSet<Topping>();
 	}
 
+	/**
+	 * Adds a topping to the coffee.
+	 */
 	public boolean add(Object obj) {
 		Topping t = (Topping) obj;
 		addons.add(t);
@@ -28,6 +40,9 @@ public class Coffee extends MenuItem implements Customizable {
 		return true;
 	}
 
+	/**
+	 * Removes a topping from the coffee.
+	 */
 	public boolean remove(Object obj) {
 		Topping t = (Topping) obj;
 		addons.remove(t);
@@ -35,19 +50,29 @@ public class Coffee extends MenuItem implements Customizable {
 		return true;
 	}
 
+	/**
+	 * Changes the size of the coffee.
+	 * @param newSize
+	 */
 	public void changeSize(int newSize) {
 		if(newSize < SHORT || newSize > VENTI) return;
 		size = newSize;
 		updatePrice();
 	}
 
+	/**
+	 * Updates the price of the coffee based on it's size and toppings.
+	 */
 	private void updatePrice() {
-		double newPrice = 1.69;
-		newPrice += (size - SHORT) * 0.4;
-		newPrice += addons.size() * 0.3;
+		double newPrice = DEFAULT_COST;
+		newPrice += (size - SHORT) * INCREASE_PER_SIZE;
+		newPrice += addons.size() * INCREASE_PER_ADDON;
 		price = newPrice;
 	}
 
+	/**
+	 * Returns a string representation of the coffee.
+	 */
 	@Override
 	public String toString() {
 		String result = "";

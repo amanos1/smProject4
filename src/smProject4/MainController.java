@@ -29,6 +29,9 @@ public class MainController implements Initializable {
 
 	@FXML private Pane pane;
 
+	/**
+	 * Initializes the values at sets up the program.
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		donutsStage = new Stage();
@@ -73,6 +76,10 @@ public class MainController implements Initializable {
 		occ.setMain(this);
 	}
 
+	/**
+	 * Launches the current order window when the button is pressed.
+	 * @throws IOException
+	 */
 	public void currentOrder() throws IOException {
 		FXMLLoader basketLoader = new FXMLLoader(getClass().getResource("BasketView.fxml"));
 		Parent basketRoot = basketLoader.load();
@@ -82,6 +89,10 @@ public class MainController implements Initializable {
 		bc.populateList(currentOrder, this);
 	}
 
+	/**
+	 * Launches the orders window when the button is pressed.
+	 * @throws IOException
+	 */
 	public void storeOrders() throws IOException {
 		FXMLLoader storeLoader = new FXMLLoader(getClass().getResource("OrdersView.fxml"));
 		Parent ordersRoot = storeLoader.load();
@@ -91,23 +102,38 @@ public class MainController implements Initializable {
 		oc.setup(database);
 	}
 
+	/**
+	 * Adds a list of coffees to the order.
+	 * @param coffees
+	 */
 	public void addCoffee(ArrayList<Coffee> coffees) {
 		for(Coffee coffee : coffees) {
 			currentOrder.add(coffee);
 		}
 	}
-	
+
+	/**
+	 * Adds a list of donut to the order.
+	 * @param donuts
+	 */
 	public void addDonuts(ArrayList<Donut> donuts) {
 		for(Donut donut : donuts) {
 			currentOrder.add(donut);
 		}
 	}
 
+	/**
+	 * Adds the current order to the database.
+	 */
 	public void addOrder() {
 		database.add(currentOrder);
 		currentOrder = new Order();
 	}
 
+	/**
+	 * Closes all the other windows when the current window is closed.
+	 * @param stage
+	 */
 	public void closeListener(Stage stage) {
 		stage.setOnCloseRequest(e -> {
 			donutsStage.close();
