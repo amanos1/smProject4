@@ -9,22 +9,28 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smProject4.OrderCoffeeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="408.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smProject4.OrderCoffeeController">
    <children>
-      <CheckBox fx:id="cream" layoutX="57.0" layoutY="163.0" mnemonicParsing="false" text="Cream" />
-      <CheckBox fx:id="whip" layoutX="57.0" layoutY="241.0" mnemonicParsing="false" text="Whipped Cream" />
-      <CheckBox fx:id="caramel" layoutX="183.0" layoutY="200.0" mnemonicParsing="false" text="Caramel" />
-      <CheckBox fx:id="milk" layoutX="57.0" layoutY="200.0" mnemonicParsing="false" text="Milk" />
-      <CheckBox fx:id="syrup" layoutX="183.0" layoutY="165.0" mnemonicParsing="false" text="Syrup" />
+      <Pane layoutX="40.0" layoutY="17.0" prefHeight="368.0" prefWidth="541.0" style="-fx-background-color: black;" />
+      <ImageView fitHeight="969.0" fitWidth="1050.0" layoutX="-110.0" layoutY="-170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/imgbin_coffee-bean-cafe-png.png" />
+         </image>
+      </ImageView>
+      <CheckBox fx:id="cream" layoutX="57.0" layoutY="163.0" mnemonicParsing="false" text="Cream" textFill="#f8f7f7" />
+      <CheckBox fx:id="whip" layoutX="57.0" layoutY="241.0" mnemonicPdoarsing="false" text="Whipped Cream" textFill="#f5f0f0" />
+      <CheckBox fx:id="caramel" layoutX="183.0" layoutY="200.0" mnemonicParsing="false" text="Caramel" textFill="#fcf8f8" />
+      <CheckBox fx:id="milk" layoutX="57.0" layoutY="200.0" mnemonicParsing="false" text="Milk" textFill="#ebe8e8" />
+      <CheckBox fx:id="syrup" layoutX="183.0" layoutY="165.0" mnemonicParsing="false" text="Syrup" textFill="#f5f4f4" />
       <ComboBox fx:id="size" layoutX="387.0" layoutY="168.0" onAction="#sizeChange" prefWidth="150.0" />
-      <Label layoutX="452.0" layoutY="138.0" text="Size" />
+      <Label layoutX="452.0" layoutY="138.0" text="Size" textFill="#f5efef" />
       <Button layoutX="419.0" layoutY="287.0" mnemonicParsing="false" onAction="#addToOrder" text="Add to Order" />
       <TextField fx:id="currentPrice" layoutX="388.0" layoutY="245.0" />
-      <Label layoutX="448.0" layoutY="217.0" text="Price:" />
+      <Label layoutX="448.0" layoutY="217.0" text="Price:" textFill="#f8f4f4" />
       <Button layoutX="436.0" layoutY="340.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
       <ComboBox fx:id="quantity" layoutX="387.0" layoutY="87.0" onAction="#quantityChanged" prefWidth="150.0" />
-      <Label layoutX="448.0" layoutY="61.0" text="Quantity" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="67.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="448.0" layoutY="61.0" text="Quantity" textFill="#f8f5f5" />
+      <ImageView fitHeight="128.0" fitWidth="143.0" layoutX="240.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Icons/615-coffee-machine-outline.gif" />
          </image>

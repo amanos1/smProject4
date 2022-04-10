@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smProject4.OrdersController">
@@ -11,8 +13,18 @@
       <ListView fx:id="orderItems" layoutX="200.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" />
       <ComboBox fx:id="orderNumber" layoutX="85.0" layoutY="76.0" onAction="#changeOrder" prefWidth="150.0" />
       <TextField fx:id="orderPrice" layoutX="300.0" layoutY="76.0" />
-      <Button layoutX="307.0" layoutY="342.0" mnemonicParsing="false" onAction="#removeOrder" text="Remove Order" />
-      <Button layoutX="220.0" layoutY="342.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
-      <Button layoutX="423.0" layoutY="342.0" mnemonicParsing="false" onAction="#export" text="Export Orders to Text File" />
+      <Button layoutX="235.0" layoutY="342.0" mnemonicParsing="false" onAction="#removeOrder" text="Remove Order" />
+      <Button layoutX="140.0" layoutY="342.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
+      <Button layoutX="371.0" layoutY="342.0" mnemonicParsing="false" onAction="#export" text="Export Orders to Text File" />
+      <ImageView fitHeight="41.0" fitWidth="40.0" layoutX="331.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/259-share-arrow-outline.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="189.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/39-trash-outline.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

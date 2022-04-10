@@ -30,7 +30,7 @@ public class RunProject4 extends Application {
 		stage.setTitle("Cafe");
 		FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
 		Parent main = mainLoader.load();
-		stage.setScene(new Scene(main, 800, 400));
+		stage.setScene(new Scene(main, 600, 400));
 		stage.show();
 		MainController mainController = mainLoader.getController();
 		mainController.closeListener(stage);
