@@ -97,7 +97,7 @@ public class MainController implements Initializable {
 		FXMLLoader storeLoader = new FXMLLoader(getClass().getResource("OrdersView.fxml"));
 		Parent ordersRoot = storeLoader.load();
 		OrdersController oc = storeLoader.getController();
-		ordersStage.setScene(new Scene(ordersRoot, 600, 400));
+		ordersStage.setScene(new Scene(ordersRoot, 600, 450));
 		ordersStage.show();
 		oc.setup(database);
 	}

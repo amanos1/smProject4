@@ -9,11 +9,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smProject4.OrdersController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smProject4.OrdersController">
    <children>
+      <ImageView fitHeight="622.0" fitWidth="617.0" layoutX="-12.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icons/sprinkle.jpeg.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="68.0" layoutY="56.0" prefHeight="329.0" prefWidth="461.0" style="-fx-background-color: white;" />
       <ListView fx:id="orderItems" layoutX="200.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" />
-      <ComboBox fx:id="orderNumber" layoutX="85.0" layoutY="76.0" onAction="#changeOrder" prefWidth="150.0" />
-      <TextField fx:id="orderPrice" layoutX="300.0" layoutY="76.0" />
+      <ComboBox fx:id="orderNumber" layoutX="134.0" layoutY="77.0" onAction="#changeOrder" prefWidth="150.0" />
+      <TextField fx:id="orderPrice" layoutX="331.0" layoutY="76.0" />
       <Button layoutX="235.0" layoutY="342.0" mnemonicParsing="false" onAction="#removeOrder" text="Remove Order" />
       <Button layoutX="140.0" layoutY="342.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
       <Button layoutX="371.0" layoutY="342.0" mnemonicParsing="false" onAction="#export" text="Export Orders to Text File" />
@@ -27,7 +33,7 @@
             <Image url="@../Icons/39-trash-outline.gif" />
          </image>
       </ImageView>
-      <Text layoutX="40.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order #:" />
-      <Text layoutX="258.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total $:" />
+      <Text layoutX="89.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order #:" />
+      <Text layoutX="290.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total $:" />
    </children>
 </Pane>
