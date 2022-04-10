@@ -1,11 +1,14 @@
 
 
 Order #1:
-	Jelly Cake Donut (5).......8.95
-	Grande Coffee, [Cream, Whipped Cream, Milk, ].......3.39
+	Chocolate Cake Donut (4).......7.16
+	Grande Coffee, [Milk, Caramel, Syrup, Whipped Cream, ].......3.69
+	Grande Coffee, [Milk, Caramel, Syrup, Whipped Cream, ].......3.69
+	Grande Coffee, [Milk, Caramel, Syrup, Whipped Cream, ].......3.69
+	Grande Coffee, [Milk, Caramel, Syrup, Whipped Cream, ].......3.69
 Subtotal:
-	12.34
+	21.92
 Tax:
-	0.82
+	1.45
 Total:
-	13.16
+	23.37

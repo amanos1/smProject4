@@ -40,7 +40,7 @@ public class OrderDonutsController implements Initializable {
 		flavor.setValue("Glazed");
 		quantity.getItems().addAll(1,2,3,4,5);
 		quantity.setValue(1);
-
+		currentPrice.setText("0.00");
 		update();
 	}
 
@@ -58,7 +58,7 @@ public class OrderDonutsController implements Initializable {
 			}
 		}
 		if(!added) donutLst.add(d);
-
+		currentPrice.setText(""+d.price);
 		update();
 	}
 
@@ -70,6 +70,7 @@ public class OrderDonutsController implements Initializable {
 
 		for(Donut d : donutLst) {
 			if(d.toString().equals(selection)) {
+				currentPrice.setText("-"+d.price);
 				donutLst.remove(d);
 				break;
 			}
@@ -87,7 +88,7 @@ public class OrderDonutsController implements Initializable {
 
 		for(Donut d : donutLst) {
 			orderList.getItems().add(d.toString());
-			totalPrice += d.itemPrice();
+			totalPrice += d.itemPrice()*d.getQuantity();
 		}
 
 		total.setText(df.format(totalPrice));
