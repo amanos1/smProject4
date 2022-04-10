@@ -24,6 +24,7 @@ public class OrderDonutsController implements Initializable {
 	@FXML private ListView<String> orderList;
 	@FXML private Label currentPrice;
 	@FXML private Label total;
+	private double totalPrice;
 
 	DecimalFormat df = new DecimalFormat("0.00");
 	private ArrayList<Donut> donutLst = new ArrayList<Donut>();
@@ -41,7 +42,8 @@ public class OrderDonutsController implements Initializable {
 		quantity.getItems().addAll(1,2,3,4,5);
 		quantity.setValue(1);
 		currentPrice.setText("0.00");
-		update();
+		totalPrice = 0;
+		//update();
 	}
 
 	/**
@@ -49,7 +51,8 @@ public class OrderDonutsController implements Initializable {
 	 */
 	public void addDonut() {
 		Donut d = new Donut(type.getValue(), flavor.getValue(), quantity.getValue());
-
+		totalPrice += d.price*quantity.getValue();
+		total.setText(df.format(totalPrice));
 		boolean added = false;
 		for(Donut donut : donutLst) {
 			if(donut.equals(d)) {
@@ -72,6 +75,8 @@ public class OrderDonutsController implements Initializable {
 			if(d.toString().equals(selection)) {
 				currentPrice.setText("-"+d.price);
 				donutLst.remove(d);
+				totalPrice -= d.price*d.getQuantity();
+				total.setText(df.format(totalPrice));
 				break;
 			}
 		}
@@ -84,14 +89,14 @@ public class OrderDonutsController implements Initializable {
 	 */
 	private void update() {
 		orderList.getItems().clear();
-		double totalPrice = 0;
+	//	double totalPrice = 0;
 
 		for(Donut d : donutLst) {
 			orderList.getItems().add(d.toString());
-			totalPrice += d.itemPrice()*d.getQuantity();
+			//totalPrice += d.itemPrice()*d.getQuantity();
 		}
 
-		total.setText(df.format(totalPrice));
+		//total.setText(df.format(totalPrice));
 	}
 
 	/**
