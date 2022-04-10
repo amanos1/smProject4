@@ -114,11 +114,11 @@ public class OrdersController implements Initializable {
 				for(MenuItem item : o.getList()) {
 					out.println("\t" + item + "......." + df.format(item.itemPrice()));
 				}
-				out.println("Subtotal:");
+				out.println("\nSubtotal:");
 				out.println("\t" + df.format(o.orderPrice()));
-				out.println("Tax:");
+				out.println("\nTax:");
 				out.println("\t" + df.format(o.getTax()));
-				out.println("Total:");
+				out.println("\nTotal:");
 				out.println("\t" + df.format(o.getTotal()));
 			}
 			out.close();

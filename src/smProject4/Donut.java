@@ -50,6 +50,13 @@ public class Donut extends MenuItem {
 		if(equals(d)) {
 			quantity += d.getQuantity();
 		}
+		if(type.equals("Yeast Donut")) {
+			price = YEAST_DONUT_PRICE * quantity;
+		} else if(type.equals("Cake Donut")) {
+			price = CAKE_DONUT_PRICE * quantity;
+		} else {
+			price = DONUT_HOLE_PRICE * quantity;
+		}
 	}
 
 	/**
