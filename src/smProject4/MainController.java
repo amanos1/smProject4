@@ -113,12 +113,23 @@ public class MainController implements Initializable {
 	}
 
 	/**
-	 * Adds a list of donut to the order.
+	 * Adds a list of donuts to the order.
 	 * @param donuts
 	 */
 	public void addDonuts(ArrayList<Donut> donuts) {
+		boolean added;
 		for(Donut donut : donuts) {
-			currentOrder.add(donut);
+			added = false;
+			for(MenuItem i : currentOrder.getList()) {
+				try {
+					Donut d = (Donut) i;
+					if(donut.equals(d)) {
+						d.addDonuts(donut);
+						added = true;
+					}
+				} catch(Exception e) {}
+			}
+			if(!added) currentOrder.add(donut);
 		}
 	}
 

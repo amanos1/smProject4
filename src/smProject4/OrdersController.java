@@ -14,6 +14,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Controls all the functions for the previous orders window.
+ * @author Aaron Browne, Harshkumar Patel
+ */
 public class OrdersController implements Initializable {
 	@FXML private ComboBox<Integer> orderNumber;
 	@FXML private TextField orderPrice;
@@ -22,17 +26,27 @@ public class OrdersController implements Initializable {
 	private int currentOrderNumber;
 	private StoreOrders orders;
 
+	/**
+	 * Initializes the values at sets up the program.
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		currentOrderNumber = 0;
 	}
 
+	/**
+	 * Retrieves order information from the main window.
+	 * @param mainStore
+	 */
 	public void setup(StoreOrders mainStore) {
 		orders = mainStore;
 		showOrder();
 		update();
 	}
 
+	/**
+	 * Shows the order currently selected or nothing if there are no orders to display.
+	 */
 	private void showOrder() {
 		if(orders.getList().isEmpty()) {
 			orderItems.getItems().clear();
@@ -50,6 +64,9 @@ public class OrdersController implements Initializable {
 		}
 	}
 
+	/**
+	 * Removes an order from the database when the button is pressed.
+	 */
 	public void removeOrder() {
 		orders.remove(orders.getList().get(currentOrderNumber));
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -62,6 +79,9 @@ public class OrdersController implements Initializable {
 		showOrder();
 	}
 
+	/**
+	 * Updates the list of orders on the drop down menu.
+	 */
 	private void update() {
 		orderNumber.getItems().clear();
 		if(orders.getList().size() == 0) return;
@@ -71,13 +91,18 @@ public class OrdersController implements Initializable {
 		orderNumber.setValue(1);
 	}
 
+	/**
+	 * Changes the order being displayed when the order number is picked in the drop-down menu.
+	 */
 	public void changeOrder() {
 		if(orderNumber.getValue() == null) return;
 		currentOrderNumber = orderNumber.getValue() - 1;
 		showOrder();
 	}
 
-
+	/**
+	 * Exports information form each of the orders to a text file.
+	 */
 	public void export() {
 		PrintWriter out;
 		DecimalFormat df = new DecimalFormat("###,##0.00");
@@ -102,6 +127,9 @@ public class OrdersController implements Initializable {
 		}
 	}
 
+	/**
+	 * Closes the window when the quit button is pressed.
+	 */
 	public void quit() {
 		Stage stage = (Stage) orderPrice.getScene().getWindow();
 		stage.close();

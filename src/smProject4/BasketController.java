@@ -14,6 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Controls all the functions for the current order window.
+ * @author Aaron Browne, Harshkumar Patel
+ */
 public class BasketController implements Initializable {
 	@FXML private ListView<String> itemList;
 	@FXML private TextField subtotal;
@@ -23,17 +27,28 @@ public class BasketController implements Initializable {
 	Order order;
 	MainController main;
 
+	/**
+	 * Initializes the values at sets up the program.
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		itemList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
 
+	/**
+	 * Retrieves information from the main window.
+	 * @param stuff	The current order.
+	 * @param mc The main controller object.
+	 */
 	public void populateList(Order stuff, MainController mc) {
 		order = stuff;
 		main = mc;
 		update();
 	}
 
+	/**
+	 * Removes an item/items from the list when the button is pressed.
+	 */
 	public void remove() {
 		ObservableList<String> selected;
 		selected = itemList.getSelectionModel().getSelectedItems();
@@ -43,6 +58,9 @@ public class BasketController implements Initializable {
 		update();
 	}
 
+	/**
+	 * Adds the current order to the list of orders and closes the window.
+	 */
 	public void submit() {
 		main.addOrder();
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -54,6 +72,9 @@ public class BasketController implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * Displays all the items currently in the order and the price.
+	 */
 	public void update() {
 		itemList.getItems().clear();
 		for(MenuItem item : order.getList()) {

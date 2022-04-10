@@ -18,7 +18,7 @@
          </image>
       </ImageView>
       <CheckBox fx:id="cream" layoutX="57.0" layoutY="163.0" mnemonicParsing="false" text="Cream" textFill="#f8f7f7" />
-      <CheckBox fx:id="whip" layoutX="57.0" layoutY="241.0" mnemonicPdoarsing="false" text="Whipped Cream" textFill="#f5f0f0" />
+      <CheckBox fx:id="whip" layoutX="57.0" layoutY="241.0" mnemonicParsing="false" text="Whipped Cream" textFill="#f5f0f0" />
       <CheckBox fx:id="caramel" layoutX="183.0" layoutY="200.0" mnemonicParsing="false" text="Caramel" textFill="#fcf8f8" />
       <CheckBox fx:id="milk" layoutX="57.0" layoutY="200.0" mnemonicParsing="false" text="Milk" textFill="#ebe8e8" />
       <CheckBox fx:id="syrup" layoutX="183.0" layoutY="165.0" mnemonicParsing="false" text="Syrup" textFill="#f5f4f4" />
