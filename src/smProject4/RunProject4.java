@@ -25,8 +25,7 @@ public class RunProject4 extends Application {
 	 * @param stage The stage that will be displayed.
 	 */
 	@Override
-	public void start(Stage stage) throws Exception
-	{
+	public void start(Stage stage) throws Exception {
 		stage.setTitle("Cafe");
 		FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainView.fxml"));
 		Parent main = mainLoader.load();
