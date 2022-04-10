@@ -149,7 +149,7 @@ public class OrderCoffeeController implements Initializable {
 
 	/**
 	 * Sets the main controller.
-	 * @param mc
+	 * @param mc The main controller object.
 	 */
 	public void setMain(MainController mc) {
 		main = mc;

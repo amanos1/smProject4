@@ -36,7 +36,7 @@ public class OrdersController implements Initializable {
 
 	/**
 	 * Retrieves order information from the main window.
-	 * @param mainStore
+	 * @param mainStore The database of orders from the main window.
 	 */
 	public void setup(StoreOrders mainStore) {
 		orders = mainStore;
@@ -82,7 +82,7 @@ public class OrdersController implements Initializable {
 	/**
 	 * Updates the list of orders on the drop down menu.
 	 */
-	private void update() {
+	public void update() {
 		orderNumber.getItems().clear();
 		if(orders.getList().size() == 0) return;
 		for(int i = 0; i < orders.getList().size(); i++) {

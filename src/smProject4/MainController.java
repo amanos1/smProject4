@@ -19,13 +19,16 @@ import javafx.stage.Stage;
  *
  */
 public class MainController implements Initializable {
-	StoreOrders database;
-	Order currentOrder;
+	private StoreOrders database;
+	private Order currentOrder;
 
-	Stage donutsStage;
-	Stage coffeeStage;
-	Stage basketStage;
-	Stage ordersStage;
+	private Stage donutsStage;
+	private Stage coffeeStage;
+	private Stage basketStage;
+	private Stage ordersStage;
+
+	private OrdersController ordersController;
+	private BasketController basketController;
 
 	@FXML private Pane pane;
 
@@ -83,10 +86,10 @@ public class MainController implements Initializable {
 	public void currentOrder() throws IOException {
 		FXMLLoader basketLoader = new FXMLLoader(getClass().getResource("BasketView.fxml"));
 		Parent basketRoot = basketLoader.load();
-		BasketController bc = basketLoader.getController();
+		basketController = basketLoader.getController();
 		basketStage.setScene(new Scene(basketRoot, 600, 400));
 		basketStage.show();
-		bc.populateList(currentOrder, this);
+		basketController.populateList(currentOrder, this);
 	}
 
 	/**
@@ -96,25 +99,27 @@ public class MainController implements Initializable {
 	public void storeOrders() throws IOException {
 		FXMLLoader storeLoader = new FXMLLoader(getClass().getResource("OrdersView.fxml"));
 		Parent ordersRoot = storeLoader.load();
-		OrdersController oc = storeLoader.getController();
+		ordersController = storeLoader.getController();
 		ordersStage.setScene(new Scene(ordersRoot, 600, 450));
 		ordersStage.show();
-		oc.setup(database);
+		ordersController.setup(database);
 	}
 
 	/**
 	 * Adds a list of coffees to the order.
-	 * @param coffees
+	 * @param coffees The coffees to add.
 	 */
 	public void addCoffee(ArrayList<Coffee> coffees) {
 		for(Coffee coffee : coffees) {
 			currentOrder.add(coffee);
 		}
+		if(basketStage.isShowing())
+			basketController.update();
 	}
 
 	/**
 	 * Adds a list of donuts to the order.
-	 * @param donuts
+	 * @param donuts The list of donuts to add.
 	 */
 	public void addDonuts(ArrayList<Donut> donuts) {
 		boolean added;
@@ -131,6 +136,8 @@ public class MainController implements Initializable {
 			}
 			if(!added) currentOrder.add(donut);
 		}
+		if(basketStage.isShowing())
+			basketController.update();
 	}
 
 	/**
@@ -139,11 +146,13 @@ public class MainController implements Initializable {
 	public void addOrder() {
 		database.add(currentOrder);
 		currentOrder = new Order();
+		if(ordersStage.isShowing())
+			ordersController.update();
 	}
 
 	/**
 	 * Closes all the other windows when the current window is closed.
-	 * @param stage
+	 * @param stage The main orders stage.
 	 */
 	public void closeListener(Stage stage) {
 		stage.setOnCloseRequest(e -> {

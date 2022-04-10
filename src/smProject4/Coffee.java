@@ -52,7 +52,7 @@ public class Coffee extends MenuItem implements Customizable {
 
 	/**
 	 * Changes the size of the coffee.
-	 * @param newSize
+	 * @param newSize The new size of the coffee.
 	 */
 	public void changeSize(int newSize) {
 		if(newSize < SHORT || newSize > VENTI) return;
