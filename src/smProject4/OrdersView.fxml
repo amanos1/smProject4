@@ -19,7 +19,7 @@
       <Pane layoutX="68.0" layoutY="56.0" prefHeight="329.0" prefWidth="461.0" style="-fx-background-color: white;" />
       <ListView fx:id="orderItems" layoutX="200.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" />
       <ComboBox fx:id="orderNumber" layoutX="134.0" layoutY="77.0" onAction="#changeOrder" prefWidth="150.0" />
-      <TextField fx:id="orderPrice" layoutX="331.0" layoutY="76.0" />
+      <TextField fx:id="orderPrice" editable="false" layoutX="331.0" layoutY="76.0" />
       <Button layoutX="235.0" layoutY="342.0" mnemonicParsing="false" onAction="#removeOrder" text="Remove Order" />
       <Button layoutX="140.0" layoutY="342.0" mnemonicParsing="false" onAction="#quit" text="Quit" />
       <Button layoutX="371.0" layoutY="342.0" mnemonicParsing="false" onAction="#export" text="Export Orders to Text File" />
