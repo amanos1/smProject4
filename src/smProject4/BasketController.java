@@ -62,14 +62,20 @@ public class BasketController implements Initializable {
 	 * Adds the current order to the list of orders and closes the window.
 	 */
 	public void submit() {
-		main.addOrder();
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Order Removed");
-		alert.setHeaderText("Order Added Successfully!");
-		alert.setContentText("Order Added Successfully!");
-		alert.showAndWait();
-		Stage stage = (Stage) tax.getScene().getWindow();
-		stage.close();
+		if(order.getList().isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Order Not Added");
+			alert.setHeaderText("Error!");
+			alert.setContentText("Cannot add an empty order.");
+			alert.showAndWait();
+		} else {
+			main.addOrder();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Order Added");
+			alert.setHeaderText("Success!");
+			alert.setContentText("Order Added Successfully!");
+			alert.showAndWait();
+		}
 	}
 
 	/**
@@ -85,5 +91,13 @@ public class BasketController implements Initializable {
 		subtotal.setText(df.format(order.orderPrice()));
 		tax.setText(df.format(order.getTax()));
 		total.setText(df.format(order.getTotal()));
+	}
+
+	/**
+	 * Closes the window when the button is pressed.
+	 */
+	public void quit() {
+		Stage stage = (Stage) tax.getScene().getWindow();
+		stage.close();
 	}
 }

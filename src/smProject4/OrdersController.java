@@ -68,15 +68,23 @@ public class OrdersController implements Initializable {
 	 * Removes an order from the database when the button is pressed.
 	 */
 	public void removeOrder() {
-		orders.remove(orders.getList().get(currentOrderNumber));
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Order Removed");
-		alert.setHeaderText("Order Removed Successfully!");
-		alert.setContentText("Order Removed Successfully!");
-		alert.showAndWait();
-		currentOrderNumber = 0;
-		update();
-		showOrder();
+		if(orders.getList().isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error!");
+			alert.setContentText("Cannot remove order because there are none!");
+			alert.showAndWait();
+		} else {
+			orders.remove(orders.getList().get(currentOrderNumber));
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Order Removed");
+			alert.setHeaderText("Success!");
+			alert.setContentText("Order Removed Successfully!");
+			alert.showAndWait();
+			currentOrderNumber = 0;
+			update();
+			showOrder();
+		}
 	}
 
 	/**

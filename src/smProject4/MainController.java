@@ -146,6 +146,7 @@ public class MainController implements Initializable {
 	public void addOrder() {
 		database.add(currentOrder);
 		currentOrder = new Order();
+		basketController.populateList(currentOrder, this);
 		if(ordersStage.isShowing())
 			ordersController.update();
 	}

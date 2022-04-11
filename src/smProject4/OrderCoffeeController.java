@@ -9,9 +9,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
@@ -162,6 +164,11 @@ public class OrderCoffeeController implements Initializable {
 		ArrayList<Coffee> coffees = new ArrayList<Coffee>();
 		for(int i = 0; i < amount; i++) coffees.add(thisCoffee);
 		main.addCoffee(coffees);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Coffees Added to Order");
+		alert.setHeaderText("Success!");
+		alert.setContentText("Coffees Added to Order!");
+		alert.showAndWait();
 		Stage stage = (Stage) cream.getScene().getWindow();
 		stage.close();
 	}

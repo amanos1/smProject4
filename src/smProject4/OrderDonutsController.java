@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -60,7 +62,7 @@ public class OrderDonutsController implements Initializable {
 			}
 		}
 		if(!added) donutLst.add(d);
-		currentPrice.setText(""+d.price);
+		currentPrice.setText(df.format(d.price));
 		update();
 	}
 
@@ -72,7 +74,7 @@ public class OrderDonutsController implements Initializable {
 
 		for(Donut d : donutLst) {
 			if(d.toString().equals(selection)) {
-				currentPrice.setText("-"+df.format(d.price));
+				currentPrice.setText("-" + df.format(d.price));
 				donutLst.remove(d);
 				totalPrice -= d.price;
 				total.setText(df.format(totalPrice));
@@ -107,8 +109,21 @@ public class OrderDonutsController implements Initializable {
 	 * Adds the items in the queue to the order.
 	 */
 	public void addToOrder() {
-		main.addDonuts(donutLst);
-		Stage stage = (Stage) type.getScene().getWindow();
-		stage.close();
+		if(donutLst.isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Donuts Not Added");
+			alert.setHeaderText("Error!");
+			alert.setContentText("There are no Donuts to add!");
+			alert.showAndWait();
+		} else {
+			main.addDonuts(donutLst);
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Donuts Added to Order");
+			alert.setHeaderText("Success!");
+			alert.setContentText("Donuts Added to Order!");
+			alert.showAndWait();
+			Stage stage = (Stage) type.getScene().getWindow();
+			stage.close();
+		}
 	}
 }
