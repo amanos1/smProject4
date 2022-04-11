@@ -49,6 +49,7 @@ public class OrderDonutsController implements Initializable {
 
 	/**
 	 * Adds donut(s) to the queue when the button is pressed.
+	 * Updates the item price and total price 
 	 */
 	public void addDonut() {
 		Donut d = new Donut(type.getValue(), flavor.getValue(), quantity.getValue());
@@ -68,6 +69,7 @@ public class OrderDonutsController implements Initializable {
 
 	/**
 	 * Removes donut(s) from the queue when button is pressed.
+	 * Updates the item price and total price 
 	 */
 	public void remove() {
 		String selection = orderList.getSelectionModel().getSelectedItem();
@@ -86,7 +88,7 @@ public class OrderDonutsController implements Initializable {
 	}
 
 	/**
-	 * Updates the list and the price in the GUI.
+	 * Updates the list  in the GUI.
 	 */
 	private void update() {
 		orderList.getItems().clear();
