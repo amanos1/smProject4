@@ -112,27 +112,37 @@ public class OrdersController implements Initializable {
 	 * Exports information form each of the orders to a text file.
 	 */
 	public void export() {
-		PrintWriter out;
-		DecimalFormat df = new DecimalFormat("###,##0.00");
-		try {
-			out = new PrintWriter("orders.txt");
-			for(int i = 0; i < orders.getList().size(); i++) {
-				Order o = orders.getList().get(i);
-				out.println("\n\nOrder #" + (i  + 1) + ":");
-				for(MenuItem item : o.getList()) {
-					out.println("\t" + item + "......." + df.format(item.itemPrice()));
+		if(orders.getList().isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Error!");
+			alert.setContentText("Cannot export empty order list!");
+			alert.showAndWait();
+		}else 
+		{
+			PrintWriter out;
+			DecimalFormat df = new DecimalFormat("###,##0.00");
+			try {
+				out = new PrintWriter("orders.txt");
+				for(int i = 0; i < orders.getList().size(); i++) {
+					Order o = orders.getList().get(i);
+					out.println("\n\nOrder #" + (i  + 1) + ":");
+					for(MenuItem item : o.getList()) {
+						out.println("\t" + item + "......." + df.format(item.itemPrice()));
+					}
+					out.println("\nSubtotal:");
+					out.println("\t" + df.format(o.orderPrice()));
+					out.println("\nTax:");
+					out.println("\t" + df.format(o.getTax()));
+					out.println("\nTotal:");
+					out.println("\t" + df.format(o.getTotal()));
 				}
-				out.println("\nSubtotal:");
-				out.println("\t" + df.format(o.orderPrice()));
-				out.println("\nTax:");
-				out.println("\t" + df.format(o.getTax()));
-				out.println("\nTotal:");
-				out.println("\t" + df.format(o.getTotal()));
+				out.close();
+			} catch (Exception e) {
+				return;
 			}
-			out.close();
-		} catch (Exception e) {
-			return;
 		}
+		
 	}
 
 	/**
