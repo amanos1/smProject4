@@ -72,19 +72,28 @@ public class OrderDonutsController implements Initializable {
 	 * Updates the item price and total price 
 	 */
 	public void remove() {
-		String selection = orderList.getSelectionModel().getSelectedItem();
+		if(donutLst.isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Donuts Not Removed");
+			alert.setHeaderText("Error!");
+			alert.setContentText("There are no Donuts to remove!");
+			alert.showAndWait();
+		}else 
+		{
+			String selection = orderList.getSelectionModel().getSelectedItem();
 
-		for(Donut d : donutLst) {
-			if(d.toString().equals(selection)) {
-				currentPrice.setText("-" + df.format(d.price));
-				donutLst.remove(d);
-				totalPrice -= d.price;
-				total.setText(df.format(totalPrice));
-				break;
+			for(Donut d : donutLst) {
+				if(d.toString().equals(selection)) {
+					currentPrice.setText("-" + df.format(d.price));
+					donutLst.remove(d);
+					totalPrice -= d.price;
+					total.setText(df.format(totalPrice));
+					break;
+				}
 			}
-		}
 
-		update();
+			update();
+		}
 	}
 
 	/**
