@@ -50,12 +50,22 @@ public class BasketController implements Initializable {
 	 * Removes an item/items from the list when the button is pressed.
 	 */
 	public void remove() {
-		ObservableList<String> selected;
-		selected = itemList.getSelectionModel().getSelectedItems();
-		for(String trash : selected) {
-			order.remove(trash);
+		if(order.getList().isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Order Not Removed");
+			alert.setHeaderText("Error!");
+			alert.setContentText("There are no orders to remove!");
+			alert.showAndWait();
+		}else 
+		{
+			ObservableList<String> selected;
+			selected = itemList.getSelectionModel().getSelectedItems();
+			for(String trash : selected) {
+				order.remove(trash);
+			}
+			update();
 		}
-		update();
+		
 	}
 
 	/**
