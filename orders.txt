@@ -1,29 +1,13 @@
 
 
 Order #1:
-	Glazed Yeast Donut (11).......17.49
+	Glazed Yeast Donut (3).......4.77
 
 Subtotal:
-	17.49
+	4.77
 
 Tax:
-	1.16
+	0.32
 
 Total:
-	18.65
-
-
-Order #2:
-	Grande Coffee, [Milk, Whipped Cream, Caramel, ].......3.39
-	Grande Coffee, [Milk, Whipped Cream, Caramel, ].......3.39
-	Grande Coffee, [Milk, Whipped Cream, Caramel, ].......3.39
-	Grande Coffee, [Milk, Whipped Cream, Caramel, ].......3.39
-
-Subtotal:
-	13.56
-
-Tax:
-	0.90
-
-Total:
-	14.46
+	5.09
