@@ -150,6 +150,7 @@ public class MainController implements Initializable {
 		if(ordersStage.isShowing())
 			ordersController.update();
 	}
+	
 
 	/**
 	 * Closes all the other windows when the current window is closed.
